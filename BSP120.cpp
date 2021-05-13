@@ -5,7 +5,7 @@
 */
 
 
-#include <BSP120.h>
+#include <BPS120.h>
 
 void BPS120::zero(double rawNull){
   if (rawNull==0.0f) // return on a timeout
