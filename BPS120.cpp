@@ -7,20 +7,6 @@
 
 #include <BPS120.h>
 
-void BPS120::zero(double rawNull){
-  if (rawNull==0.0f) // return on a timeout
-    rawOffset = rawForZero-rawPressure;
-  else
-    rawOffset = rawNull;
-}
-
-void BPS120::setDecay(double setPoint){
-      if (setPoint > 1.0f)
-        decayTime = setPoint;
-      else
-        decayTime = 1.0f;
-}
-
 double BPS120::measure(){
   Wire.requestFrom(addr,2); // request 2 bytes from slave device
   if (Wire.available()) {

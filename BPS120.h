@@ -21,10 +21,12 @@ public:
   double rawPressure = -diffMax;
   double measure();
   double psid() {return ((pMax-pMin)*(rawPressure-0.1*rawMax+rawOffset)/(0.8*rawMax)+pMin)*scaleFactor;};
-  double inH20() {return psid()*27.7076f;};
+  double inH2O() {return psid()*27.7076f;};
   double Torr() {return psid()*51.7149f;};
+  double mTorr() {return psid()*51714.9f;};
   double Pa() {return psid()*6894.76f;};
+  double kPa() {return psid()*6.89476f;};
   double atm() {return psid()*0.068046f;};
-  void zero(double rawNull);
-  void setDecay(double setPoint);
+  void zero(double rawNull){rawOffset = (rawNull==0.0f)?rawForZero-rawPressure:rawNull;}; // 0.0f from calculations is a bad check, but to indicate to use current pressure it's fine
+  void setDecay(double setPoint){decayTime = (setPoint > 1.0f)?setPoint:1.0f;}; // It makes no sense to average less than one measurement
 };
