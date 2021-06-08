@@ -7,7 +7,7 @@
 
 #include <BPS120.h>
 
-double BPS120::measure(){
+int BPS120::measure(){
   Wire.requestFrom(addr,2); // request 2 bytes from slave device
   if (Wire.available()) {
     char c = Wire.read(); // receive a byte as character
@@ -27,5 +27,6 @@ double BPS120::measure(){
     }
   }
   else statusBits = 4; // there are two status bits, this overflow is used for no response
+  return statusBits;
 }
 
