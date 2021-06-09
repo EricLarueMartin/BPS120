@@ -32,7 +32,7 @@ public:
   void zero(double rawNull){rawOffset = (rawNull==0.0f)?rawForZero-rawPressure:rawNull;}; // 0.0f from calculations is a bad check, but to indicate to use current pressure it's fine
   void setDecay(double setPoint){decayTime = (setPoint > 1.0f)?setPoint:1.0f;}; // It makes no sense to average less than one measurement
   double psidToRaw(double p) {return rawMax*(0.8*p/scaleFactor+0.1*pMax-0.9*pMin)/(pMax-pMin);};
-  double inH20ToRaw(double p) {return psidToRaw(p/27.7076f);};
+  double inH2OToRaw(double p) {return psidToRaw(p/27.7076f);};
   double TorrToRaw(double p) {return psidToRaw(p/51.7149f);};
   double mTorrToRaw(double p) {return psidToRaw(p/51714.9f);};
   double PaToRaw(double p) {return psidToRaw(p/6894.76f);};
