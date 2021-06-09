@@ -1,10 +1,3 @@
-/*
-  Pressure recording for SEEED W600 device.
-  Unfortunately the W600 development board is a PITA to work with since the only library for it forces strings to be stored in flash.
-  At a price savings of $6 a board over the Feather HUZZAH it isn't worth the trouble to use W600 over an ESP8266 system.
-*/
-
-
 #include <BPS120.h>
 
 int BPS120::measure(){
